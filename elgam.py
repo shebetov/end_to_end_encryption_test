@@ -1,5 +1,7 @@
 
-word = 'криптосистема'
+alphabet = ['а', 'б', 'в', 'г', 'д', 'е', 'ё', 'ж', 'з', 'и', 'й', 'к', 'л', 'м', 'н', 'о', 'п', 'р', 'с', 'т', 'у', 'ф', 'х', 'ц', 'ч', 'ш', 'щ', 'ъ', 'ы', 'ь', 'э', 'ю', 'я']
+
+word = 'абрамов'
 
 def isSimple(n):
    d = 2
@@ -12,16 +14,16 @@ def gcd(a, b): #greatest common divisor
         a, b = b, a % b
     return a
 
-def s2b(s, offset=1071):
-    return [(ord(i) - offset) for i in s]
+def s2b(s):
+    return [alphabet.index(i) + 1 for i in s]
 
-def b2s(b, offset=1071):
-    return ''.join([chr(i + offset) for i in b])
+def b2s(b):
+    return ''.join([alphabet[i - 1] for i in b])
 
 def checkG(g, p):
     Fn = p - 1
     if ((g ** Fn) % (Fn + 1) == 1) and (g < (Fn + 1)):
-        for i in range(1, Fn - 1):
+        for i in range(1, Fn):
             if g ** i % (Fn + 1) == 1:
                 return False
     else:
@@ -90,5 +92,5 @@ print(word + ' - ' + str(nword))
 encrypted_nword = [(y**k * i % p) for i in nword]
 print(b2s(encrypted_nword) + ' - ' + str(encrypted_nword))
 
-decrypted_nword = [((i * a) ** (p - 1 - x) % p) for i in encrypted_nword]
+decrypted_nword = [(i * (a ** (p - 1 - x)) % p) for i in encrypted_nword]
 print(b2s(decrypted_nword) + ' - ' + str(decrypted_nword))
