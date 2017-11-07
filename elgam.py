@@ -84,13 +84,13 @@ while True:
         pass
 
 nword = s2b(word)
+print(b2s(nword) + ' - ' + nword)
 
 a = g ** k % p
+print('a: ' + str(a))
 
 encrypted_nword = [(y**k * i % p) for i in nword]
+print(b2s(encrypted_nword) + ' - ' + encrypted_nword)
 
 decrypted_nowrd = [((i * a) ** (p - 1 - x) % p) for i in encrypted_nword]
-
-print(nword)
-print(encrypted_nword)
-print(decrypted_nowrd)
+print(b2s(decrypted_nowrd) + ' - ' + decrypted_nowrd)
