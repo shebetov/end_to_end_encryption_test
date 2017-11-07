@@ -73,6 +73,7 @@ while True:
         pass
 
 y = g**x%p
+print('y: ' + str(y))
 
 while True:
     try:
