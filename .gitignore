@@ -1,0 +1,5 @@
+secret_configs.txt
+
+*.pyc
+
+.idea/
