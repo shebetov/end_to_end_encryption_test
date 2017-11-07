@@ -3,3 +3,5 @@ secret_configs.txt
 *.pyc
 
 .idea/
+
+example_on_c.cs
