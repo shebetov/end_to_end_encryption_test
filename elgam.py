@@ -88,8 +88,8 @@ a = g ** k % p
 
 encrypted_nword = [(y**k * i % p) for i in nword]
 
-decrypted_nowrd = [((i * a) ** (p - 1 - x) % p) for i in encrypted_nword]
+decrypted_nword = [((i * a) ** (p - 1 - x) % p) for i in encrypted_nword]
 
 print(nword)
 print(encrypted_nword)
-print(decrypted_nowrd)
+print(decrypted_nword)
