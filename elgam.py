@@ -23,10 +23,8 @@ def checkG(g, p):
     if ((g ** Fn) % (Fn + 1) == 1) and (g < (Fn + 1)):
         for i in range(1, Fn - 1):
             if g ** i % (Fn + 1) == 1:
-                print(i)
                 return False
     else:
-        print('h')
         return False
     return True
 
@@ -73,6 +71,7 @@ while True:
         pass
 
 y = g**x%p
+print('y: ' + str(y))
 
 while True:
     try:
@@ -82,14 +81,14 @@ while True:
     except:
         pass
 
-nword = s2b(word)
-
 a = g ** k % p
+print('a: ' + str(a))
+
+nword = s2b(word)
+print(word + ' - ' + str(nword))
 
 encrypted_nword = [(y**k * i % p) for i in nword]
+print(b2s(encrypted_nword) + ' - ' + str(encrypted_nword))
 
 decrypted_nword = [((i * a) ** (p - 1 - x) % p) for i in encrypted_nword]
-
-print(nword)
-print(encrypted_nword)
-print(decrypted_nword)
+print(b2s(decrypted_nword) + ' - ' + str(decrypted_nword))
