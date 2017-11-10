@@ -30,24 +30,6 @@ def checkG(g, p):
         return False
     return True
 
-
-def genPrimeNumbers(nmin, nmax):
-    a = [0] * nmax
-    for i in range(nmax):
-        a[i] = i
-    a[1] = 0
-
-    m = 2
-    while m < nmax:
-        if a[m] != 0:
-            j = m * 2
-            while j < nmax:
-                a[j] = 0
-                j = j + m
-        m += 1
-
-    return [i for i in a if (i >= nmin)]
-
 while True:
     try:
         p = int(input('p: '))
@@ -72,13 +54,13 @@ while True:
     except:
         pass
 
-y = g**x%p
+y = g**x % p
 print('y: ' + str(y))
 
 while True:
     try:
         k = int(input('k: '))
-        if k <= p - 1:
+        if k < p:
             break
     except:
         pass
@@ -89,8 +71,12 @@ print('a: ' + str(a))
 nword = s2b(word)
 print(word + ' - ' + str(nword))
 
-encrypted_nword = [(y**k * i % p) for i in nword]
-print(b2s(encrypted_nword) + ' - ' + str(encrypted_nword))
+
+encrypted_nword = [((y**k * i) % p) for i in nword]
+try:
+    print(b2s(encrypted_nword) + ' - ' + str(encrypted_nword))
+except:
+    print(encrypted_nword)
 
 decrypted_nword = [(i * (a ** (p - 1 - x)) % p) for i in encrypted_nword]
 print(b2s(decrypted_nword) + ' - ' + str(decrypted_nword))
